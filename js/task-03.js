@@ -14,12 +14,13 @@ const images = [
 ];
 
 const imgRef = document.querySelector(".gallery");
-images.forEach((image) => {
-  imgRef.insertAdjacentHTML(
-    "afterbegin",
-    `<li><img src = "${image.url}" alt = "${image.alt}"  width = "250" height = "200" /></li>`
-  );
-});
+
+const createElement = (image) => {
+  return `<li><img src = "${image.url}" alt = "${image.alt}"  width = "250" height = "200" /></li>`;
+};
+const markUp = images.map(createElement).join("");
+
+imgRef.insertAdjacentHTML("beforeend", markUp);
 
 imgRef.style.display = "flex";
 imgRef.style.listStyle = "none";
